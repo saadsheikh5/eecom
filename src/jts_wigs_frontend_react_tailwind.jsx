@@ -173,20 +173,12 @@ export default function JTSWigsStore() {
             <Menu size={24} />
           </button>
 
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => setActivePage('home')}>
+          <div className="cursor-pointer" onClick={() => setActivePage('home')}>
             <img
               src="images/logo.png"
               alt="JTS Logo"
-              className="h-16 sm:h-20 object-contain"
+              className="h-20 sm:h-24 object-contain"
             />
-            <div className="text-left">
-              <h1 className="text-xl sm:text-2xl font-semibold tracking-[0.25em] uppercase leading-none">
-                JTS
-              </h1>
-              <p className="text-[10px] tracking-[0.35em] uppercase text-gray-300 mt-1">
-                Beauty World
-              </p>
-            </div>
           </div>
 
           <div className="flex gap-4 items-center text-xl">
