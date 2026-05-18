@@ -175,7 +175,7 @@ export default function JTSWigsStore() {
 
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => setActivePage('home')}>
             <img
-              src="/images/logo.png"
+              src="images/logo.png"
               alt="JTS Logo"
               className="h-16 sm:h-20 object-contain"
             />
