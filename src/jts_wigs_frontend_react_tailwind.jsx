@@ -956,7 +956,7 @@ export default function JTSWigsStore() {
       {activePage === 'products' && (
         <section className="min-h-screen bg-[#f6f2ee] px-4 py-20 sm:px-8">
           <div className="max-w-7xl mx-auto">
-            <div className="flex items-center justify-between mb-10">
+            <div className="flex items-start justify-between mb-10">
               <div>
                 <p className="uppercase tracking-[0.3em] text-sm text-[#3a5c4b]">
                   Browse Collection
