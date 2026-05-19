@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ShoppingBag, Search, Menu, Calendar, Star, X } from 'lucide-react'
 
 export default function JTSWigsStore() {
@@ -11,6 +11,29 @@ export default function JTSWigsStore() {
   const [cartDetails, setCartDetails] = useState([])
   const [openDropdown, setOpenDropdown] = useState(null)
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [scrollY, setScrollY] = useState(0)
+  const [isNavVisible, setIsNavVisible] = useState(true)
+
+  useEffect(() => {
+    let lastScrollY = 0
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down
+        setIsNavVisible(false)
+      } else {
+        // Scrolling up
+        setIsNavVisible(true)
+      }
+
+      lastScrollY = currentScrollY
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
   
   const wigStyles = ['Straight', 'Bodywave', 'Deep Wave', 'Water Wave', 'Burmese Curl', 'Pineapple Wave']
   
@@ -77,7 +100,7 @@ export default function JTSWigsStore() {
     {
       title: 'Light Color Bob Wig',
       price: '$280',
-      image: 'images/logo-1.jpeg',
+      image: 'images/light bob wig.jpeg',
       description: '13x4 • 14 inch • 230 Density • Transparent Lace',
       category: 'Wigs',
       type: 'Bob Wigs',
@@ -85,7 +108,7 @@ export default function JTSWigsStore() {
     {
       title: 'Dark Bob Wig',
       price: '$290',
-      image: 'images/logo-2.jpeg',
+      image: 'images/Dark Bob lace.jpeg',
       description: 'Dark Bob • 13x4 • 14 inch • 230 Density • Transparent Lace',
       category: 'Wigs',
       type: 'Bob Wigs',
@@ -175,7 +198,9 @@ export default function JTSWigsStore() {
       </div>
 
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-[#183528] text-white shadow-md">
+      <header className={`sticky top-0 z-50 bg-[#183528] text-white shadow-md transition-transform duration-300 ease-in-out ${
+        isNavVisible ? 'translate-y-0' : '-translate-y-full'
+      }`}>
         <div className="flex items-center justify-between px-4 py-4 max-w-7xl mx-auto">
           <button 
             onClick={() => setSidebarOpen(!sidebarOpen)}
