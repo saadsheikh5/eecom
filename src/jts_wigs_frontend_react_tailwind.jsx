@@ -198,9 +198,9 @@ export default function JTSWigsStore() {
   const productCategories = {
     'Wigs': wigCategories.concat(featuredProducts.filter(p => p.category === 'Wigs')),
     'Bonnets': [
-      { name: 'Black Hair Bonnet', price: '$15', category: 'Bonnets', id: 'bonnet-1', image: '/images/black bonnet.jpg' },
-      { name: 'Pink Hair Bonnet', price: '$18', category: 'Bonnets', id: 'bonnet-2', image: '/images/pink bonnet new.jpg' },
-      { name: 'White Hair Bonnet', price: '$18', category: 'Bonnets', id: 'bonnet-3', image: '/images/white bonnet new.jpg' },
+      { name: 'Black Hair Bonnet', price: '$15', category: 'Bonnets', id: 'bonnet-1', image: 'images/black bonnet.jpg' },
+      { name: 'Pink Hair Bonnet', price: '$18', category: 'Bonnets', id: 'bonnet-2', image: 'images/pink bonnet new.jpg' },
+      { name: 'White Hair Bonnet', price: '$18', category: 'Bonnets', id: 'bonnet-3', image: 'images/white bonnet new.jpg' },
     ],
     'Lace Tints': beautyProducts.filter(p => p.category === 'Lace Tints'),
     'Hair Products': beautyProducts.filter(p => p.category === 'Hair Products'),
