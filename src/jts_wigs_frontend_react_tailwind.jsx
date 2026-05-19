@@ -244,7 +244,7 @@ export default function JTSWigsStore() {
             <Menu size={24} />
           </button>
 
-          <div className="cursor-pointer flex items-center justify-center gap-4 flex-1" onClick={() => setActivePage('home')}>
+          <div className="cursor-pointer flex items-center justify-center gap-4 flex-1 mt-6" onClick={() => setActivePage('home')}>
             <img
               src="images/logonew.png"
               alt="JTS Logo"
