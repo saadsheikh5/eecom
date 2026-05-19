@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { ShoppingBag, Search, Menu, Calendar, Star, X } from 'lucide-react'
+import { ShoppingBag, Search, Menu, Star, X } from 'lucide-react'
 
 export default function JTSWigsStore() {
   const [cartCount, setCartCount] = useState(0)
@@ -128,44 +128,79 @@ export default function JTSWigsStore() {
       price: '$10',
       category: 'Lace Tints',
       id: 'tint-1',
-      image: 'images/lace glue/WhatsApp Image 2026-05-16 at 21.19.29 (1).jpeg',
+      image: 'images/lace tint spray -light warm brown.jpeg',
     },
     {
       name: 'JTs Lace Tint - Dark Brown',
       price: '$10',
       category: 'Lace Tints',
       id: 'tint-2',
-      image: 'images/lace glue/WhatsApp Image 2026-05-16 at 21.19.30.jpeg',
+      image: 'images/lace tint spray -dark brown.jpeg',
     },
     {
       name: 'JTs Lace Tint - Medium Brown',
       price: '$10',
       category: 'Lace Tints',
       id: 'tint-3',
-      image: 'images/lace glue/WhatsApp Image 2026-05-16 at 21.19.30 (1).jpeg',
+      image: 'images/lace tint spray -medium brown.jpeg',
     },
     {
       name: 'JTs Lace Tint - Light Brown',
       price: '$10',
       category: 'Lace Tints',
       id: 'tint-4',
-      image: 'images/lace glue/WhatsApp Image 2026-05-16 at 21.19.29.jpeg',
+      image: 'images/lace tint spray -light brown.jpeg',
     },
     {
-      name: 'JTs Beauty Mousse',
-      price: '$8',
+      name: 'JTs Lace Glue Pro - Pineapple',
+      price: '$9.99',
       category: 'Hair Products',
-      id: 'mousse-1',
-      image: 'images/lace glue/WhatsApp Image 2026-05-16 at 21.19.30.jpeg',
+      id: 'glue-pineapple',
+      image: 'images/lace glue/lace glue pro -pineapple.jpeg',
+    },
+    {
+      name: 'JTs Lace Glue Pro - Strawberry',
+      price: '$9.99',
+      category: 'Hair Products',
+      id: 'glue-strawberry',
+      image: 'images/lace glue/lace glue pro -strawberry.jpeg',
+    },
+    {
+      name: 'JTs Lace Glue Pro - Watermelon',
+      price: '$9.99',
+      category: 'Hair Products',
+      id: 'glue-watermelon',
+      image: 'images/lace glue/lace glue pro -watermelon.jpeg',
+    },
+    {
+      name: 'JTs Glue Remover',
+      price: '$8.99',
+      category: 'Hair Products',
+      id: 'glue-remover',
+      image: 'images/lace glue/GLUE REMOVER.jpg',
+    },
+    {
+      name: 'JTs Silkening Mist',
+      price: '$10.99',
+      category: 'Hair Products',
+      id: 'silkening-mist',
+      image: 'images/lace glue/silkening mist.jpeg',
+    },
+    {
+      name: 'JTs Wax Stick',
+      price: '$7.99',
+      category: 'Hair Products',
+      id: 'wax-stick',
+      image: 'images/lace glue/WAX STICK.jpg',
     },
   ]
 
   const productCategories = {
     'Wigs': wigCategories.concat(featuredProducts.filter(p => p.category === 'Wigs')),
     'Bonnets': [
-      { name: 'Black Hair Bonnet', price: '$15', category: 'Bonnets', id: 'bonnet-1', image: 'images/black bonnet.jpg' },
-      { name: 'Pink Hair Bonnet', price: '$18', category: 'Bonnets', id: 'bonnet-2', image: 'images/pink bonnet.jpg' },
-      { name: 'White Hair Bonnet', price: '$18', category: 'Bonnets', id: 'bonnet-3', image: 'images/white bonnet.jpg' },
+      { name: 'Black Hair Bonnet', price: '$15', category: 'Bonnets', id: 'bonnet-1', image: '/images/black bonnet.jpg' },
+      { name: 'Pink Hair Bonnet', price: '$18', category: 'Bonnets', id: 'bonnet-2', image: '/images/pink bonnet new.jpg' },
+      { name: 'White Hair Bonnet', price: '$18', category: 'Bonnets', id: 'bonnet-3', image: '/images/white bonnet new.jpg' },
     ],
     'Lace Tints': beautyProducts.filter(p => p.category === 'Lace Tints'),
     'Hair Products': beautyProducts.filter(p => p.category === 'Hair Products'),
@@ -201,7 +236,7 @@ export default function JTSWigsStore() {
       <header className={`sticky top-0 z-50 bg-[#183528] text-white shadow-md transition-transform duration-300 ease-in-out ${
         isNavVisible ? 'translate-y-0' : '-translate-y-full'
       }`}>
-        <div className="flex items-center justify-between px-4 py-4 max-w-7xl mx-auto">
+        <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-4 max-w-7xl mx-auto">
           <button 
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="space-y-1 hover:opacity-80 transition"
@@ -209,15 +244,14 @@ export default function JTSWigsStore() {
             <Menu size={24} />
           </button>
 
-          <div className="cursor-pointer flex items-center gap-3 sm:gap-4" onClick={() => setActivePage('home')}>
+          <div className="cursor-pointer flex items-center justify-center gap-4 flex-1" onClick={() => setActivePage('home')}>
             <img
-              src="images/logo.png"
+              src="images/logonew.png"
               alt="JTS Logo"
-              className="h-40 sm:h-48 object-contain"
+              className="h-28 sm:h-40 lg:h-52 object-contain align-middle"
+              style={{ maxWidth: '110px' }}
             />
-            <div className="block">
-              <h1 className="text-2xl sm:text-4xl font-bold text-[#d4c2aa]">JTS BEAUTY</h1>
-            </div>
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-[#d4c2aa] whitespace-nowrap flex items-center" style={{lineHeight:1}}>JTS BEAUTY</h1>
           </div>
 
           <div className="flex gap-4 items-center text-xl">
@@ -351,9 +385,9 @@ export default function JTSWigsStore() {
                   </button>
                 </div>
 
-                {/* Serums Section */}
+                {/* Hair Care Section */}
                 <div>
-                  <h3 className="font-bold text-[#183528] text-lg mb-3">Serums</h3>
+                  <h3 className="font-bold text-[#183528] text-lg mb-3">Hair Care</h3>
                   <button
                     onClick={() => {
                       setSelectedProductType('Hair Products')
@@ -362,7 +396,7 @@ export default function JTSWigsStore() {
                     }}
                     className="block w-full text-left text-[#3a5c4b] hover:text-[#d4c2aa] transition text-sm pl-4"
                   >
-                    Hair Serums
+                    Hair Care Products
                   </button>
                 </div>
               </div>
@@ -473,13 +507,13 @@ export default function JTSWigsStore() {
       <section className="bg-[#f3efea] py-20 px-6 text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-5xl sm:text-7xl font-black leading-none uppercase text-[#204533]">
-            Schedule An Appointment
+            Hair Care Products
           </h2>
 
           <div className="w-44 h-2 bg-[#204533] mx-auto rounded-full mt-8 mb-10"></div>
 
-          <button onClick={() => setActivePage('appointment')} className="bg-[#183528] text-white px-10 py-5 uppercase tracking-[0.2em] font-semibold hover:bg-[#2f5140] transition-all duration-300">
-            Set Appointment
+          <button onClick={() => setActivePage('products')} className="bg-[#183528] text-white px-10 py-5 uppercase tracking-[0.2em] font-semibold hover:bg-[#2f5140] transition-all duration-300">
+            Shop Now
           </button>
         </div>
       </section>
@@ -556,35 +590,44 @@ export default function JTSWigsStore() {
         </div>
       </section>
 
-      {/* Beauty Products */}
+      {/* Hair Care Products */}
       <section className="bg-white py-16 px-4 sm:px-6 lg:px-10">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <p className="uppercase tracking-[0.3em] text-sm text-[#3a5c4b]">
               Accessories & Care
             </p>
             <h2 className="text-4xl sm:text-5xl font-bold mt-2">
-              Beauty Products
+              Hair Care Products
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {beautyProducts.map((item, index) => (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+            {beautyProducts.map((product, index) => (
               <div
-                key={index}
-                className="border border-[#e6e1da] p-6 flex items-center justify-between hover:border-[#183528] transition-all duration-300"
+                key={`haircare-${index}`}
+                className="bg-white overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group"
               >
-                <div>
-                  <h3 className="font-semibold text-lg">{item.name}</h3>
-                  <p className="text-[#183528] font-bold mt-2">{item.price}</p>
+                <div className="overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="h-56 sm:h-80 w-full object-cover group-hover:scale-105 transition duration-500"
+                    onError={(e) => e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Crect fill="%23e6e1da" width="100" height="100"/%3E%3Ctext x="50" y="50" font-family="Arial" font-size="14" fill="%23999" text-anchor="middle" dy=".3em"%3ENo Image%3C/text%3E%3C/svg%3E'}
+                  />
                 </div>
 
-                <button 
-                  onClick={() => handleAddToCart(item)}
-                  className="border border-[#183528] px-4 py-2 text-xs uppercase tracking-[0.2em] hover:bg-[#183528] hover:text-white transition-all duration-300"
-                >
-                  Buy
-                </button>
+                <div className="p-5 text-center">
+                  <h3 className="font-semibold text-lg">{product.name}</h3>
+                  <p className="text-[#183528] font-bold mt-4 text-xl">{product.price}</p>
+
+                  <button 
+                    onClick={() => handleAddToCart(product)}
+                    className="w-full border border-[#183528] px-4 py-3 text-sm uppercase tracking-[0.2em] hover:bg-[#183528] hover:text-white transition-all duration-300 mt-5"
+                  >
+                    Add To Cart
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -750,63 +793,7 @@ export default function JTSWigsStore() {
       </>
       )}
 
-      {activePage === 'appointment' && (
-        <section className="min-h-screen bg-[#f6f2ee] px-4 py-20 sm:px-8">
-          <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 items-start">
-            <div>
-              <p className="uppercase tracking-[0.3em] text-sm text-[#3a5c4b]">
-                Luxury Consultation
-              </p>
-              <h2 className="text-5xl font-black mt-4 leading-tight uppercase text-[#183528]">
-                Set An Appointment
-              </h2>
 
-              <p className="mt-6 text-gray-600 leading-relaxed text-lg">
-                Schedule a private wig consultation inspired by the luxury Yaffa Wigs booking experience.
-              </p>
-
-              <div className="mt-10 space-y-5 text-[#183528]">
-                <div className="flex gap-4 items-center bg-white p-5 shadow-sm">
-                  <Calendar />
-                  <span>In-Person Consultation</span>
-                </div>
-
-                <div className="flex gap-4 items-center bg-white p-5 shadow-sm">
-                  <Calendar />
-                  <span>Virtual Wig Appointment</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-8 shadow-xl border border-[#e7e1d8]">
-              <h3 className="text-2xl font-semibold mb-6 uppercase tracking-[0.15em]">
-                Book Appointment
-              </h3>
-
-              <div className="space-y-5">
-                <input placeholder="Full Name" className="w-full border border-[#d9d1c7] p-4 outline-none focus:border-[#183528]" />
-                <input placeholder="Email Address" className="w-full border border-[#d9d1c7] p-4 outline-none focus:border-[#183528]" />
-                <input placeholder="Phone Number" className="w-full border border-[#d9d1c7] p-4 outline-none focus:border-[#183528]" />
-
-                <select className="w-full border border-[#d9d1c7] p-4 outline-none focus:border-[#183528]">
-                  <option>Select Wig Service</option>
-                  <option>Custom Wig Consultation</option>
-                  <option>Hair Styling</option>
-                  <option>Wig Coloring</option>
-                </select>
-
-                <input type="date" className="w-full border border-[#d9d1c7] p-4 outline-none focus:border-[#183528]" />
-
-                <textarea rows="5" placeholder="Additional Notes" className="w-full border border-[#d9d1c7] p-4 outline-none focus:border-[#183528]"></textarea>
-
-                <button className="w-full bg-[#183528] text-white py-5 uppercase tracking-[0.2em] font-semibold hover:bg-[#2f5140] transition-all duration-300">
-                  Confirm Appointment
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {activePage === 'cart' && (
         <section className="min-h-screen bg-[#f6f2ee] px-4 py-20 sm:px-8">
@@ -884,71 +871,82 @@ export default function JTSWigsStore() {
       )}
 
       {activePage === 'details' && selectedProduct && (
-        <section className="min-h-screen bg-white px-4 py-20 sm:px-8">
-          <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-start">
-            <div>
-              <img
-                src={selectedProduct.image}
-                alt={selectedProduct.title}
-                className="w-full h-[700px] object-cover"
-              />
-            </div>
-
-            <div>
-              <p className="uppercase tracking-[0.3em] text-sm text-[#3a5c4b]">
-                Luxury Collection
-              </p>
-
-              <h1 className="text-5xl font-black mt-4 uppercase leading-tight">
-                {selectedProduct.title}
-              </h1>
-
-              <div className="flex items-center gap-2 mt-6">
-                <Star fill="currentColor" size={18} />
-                <Star fill="currentColor" size={18} />
-                <Star fill="currentColor" size={18} />
-                <Star fill="currentColor" size={18} />
-                <Star fill="currentColor" size={18} />
-                <span className="text-gray-500 ml-2">Luxury Wig Collection</span>
+        <section className="min-h-screen bg-white px-4 py-10 sm:py-20 sm:px-8">
+          <div className="max-w-7xl mx-auto">
+            <button
+              onClick={() => setActivePage('products')}
+              className="border border-[#183528] text-[#183528] px-3 py-2 sm:px-6 sm:py-3 uppercase tracking-[0.15em] text-xs sm:text-sm hover:bg-[#183528] hover:text-white transition-all duration-300 mb-6 sm:mb-10"
+            >
+              ← Back to Products
+            </button>
+            
+            <div className="grid lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-14 items-start">
+              <div>
+                <img
+                  src={selectedProduct.image}
+                  alt={selectedProduct.title || selectedProduct.name}
+                  className="w-full h-64 sm:h-96 lg:h-[700px] object-cover"
+                />
               </div>
 
-              <p className="text-4xl font-bold mt-8 text-[#183528]">
-                {selectedProduct.price}
-              </p>
+              <div>
+                <p className="uppercase tracking-[0.3em] text-xs sm:text-sm text-[#3a5c4b]">
+                  Product Details
+                </p>
 
-              <p className="mt-8 text-gray-600 leading-relaxed text-lg">
-                {selectedProduct.description}. Premium transparent lace wig crafted for a natural luxurious look inspired by Yaffa Wigs Miami.
-              </p>
+                <h1 className="text-2xl sm:text-3xl lg:text-5xl font-black mt-3 sm:mt-4 uppercase leading-tight">
+                  {selectedProduct.title || selectedProduct.name}
+                </h1>
 
-              <div className="grid grid-cols-2 gap-4 mt-10">
-                <select className="border border-[#d9d1c7] p-4">
-                  <option>Select Length</option>
-                  <option>10 inch</option>
-                  <option>20 inch</option>
-                  <option>30 inch</option>
-                  <option>40 inch</option>
-                </select>
+                <div className="flex items-center gap-1 sm:gap-2 mt-4 sm:mt-6 flex-wrap">
+                  <Star fill="currentColor" size={14} className="sm:w-[18px] sm:h-[18px]" />
+                  <Star fill="currentColor" size={14} className="sm:w-[18px] sm:h-[18px]" />
+                  <Star fill="currentColor" size={14} className="sm:w-[18px] sm:h-[18px]" />
+                  <Star fill="currentColor" size={14} className="sm:w-[18px] sm:h-[18px]" />
+                  <Star fill="currentColor" size={14} className="sm:w-[18px] sm:h-[18px]" />
+                  <span className="text-gray-500 text-xs sm:text-sm ml-1 sm:ml-2">Premium Quality</span>
+                </div>
 
-                <select className="border border-[#d9d1c7] p-4">
-                  <option>Select Density</option>
-                  <option>250 Density</option>
-                </select>
-              </div>
+                <p className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-6 sm:mt-8 text-[#183528]">
+                  {selectedProduct.price}
+                </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 mt-10">
-                <button
-                  onClick={() => handleAddToCart(selectedProduct)}
-                  className="bg-[#183528] text-white px-10 py-5 uppercase tracking-[0.2em] font-semibold hover:bg-[#2f5140] transition-all duration-300 flex-1"
-                >
-                  Add To Cart
-                </button>
+                <p className="mt-4 sm:mt-8 text-gray-600 leading-relaxed text-sm sm:text-base">
+                  {selectedProduct.description || selectedProduct.details || 'Premium quality product crafted for excellence and durability.'}
+                </p>
 
-                <button
-                  onClick={() => setActivePage('appointment')}
-                  className="border border-[#183528] text-[#183528] px-10 py-5 uppercase tracking-[0.2em] font-semibold hover:bg-[#183528] hover:text-white transition-all duration-300 flex-1"
-                >
-                  Set Appointment
-                </button>
+                {selectedProduct.style && (
+                  <div className="grid grid-cols-2 gap-2 sm:gap-4 mt-6 sm:mt-10">
+                    <select className="border border-[#d9d1c7] p-2 sm:p-4 text-xs sm:text-base">
+                      <option>Select Length</option>
+                      <option>10 inch</option>
+                      <option>20 inch</option>
+                      <option>30 inch</option>
+                      <option>40 inch</option>
+                    </select>
+
+                    <select className="border border-[#d9d1c7] p-2 sm:p-4 text-xs sm:text-base">
+                      <option>Select Density</option>
+                      <option>250 Density</option>
+                    </select>
+                  </div>
+                )}
+
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-6 sm:mt-10">
+                  <button
+                    onClick={() => handleAddToCart(selectedProduct)}
+                    className="bg-[#183528] text-white px-6 sm:px-10 py-3 sm:py-5 uppercase tracking-[0.2em] font-semibold text-xs sm:text-sm hover:bg-[#2f5140] transition-all duration-300 flex-1"
+                  >
+                    Add To Cart
+                  </button>
+
+                  <button
+                    onClick={() => setActivePage('products')}
+                    className="border border-[#183528] text-[#183528] px-6 sm:px-10 py-3 sm:py-5 uppercase tracking-[0.2em] font-semibold text-xs sm:text-sm hover:bg-[#183528] hover:text-white transition-all duration-300 flex-1"
+                  >
+                    Continue Shopping
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -1049,12 +1047,24 @@ export default function JTSWigsStore() {
                         <h3 className="font-semibold text-lg">{product.name}</h3>
                         <p className="text-[#183528] font-bold mt-4 text-xl">{product.price}</p>
 
-                        <button 
-                          onClick={() => handleAddToCart(product)}
-                          className="w-full border border-[#183528] px-4 py-3 text-sm uppercase tracking-[0.2em] hover:bg-[#183528] hover:text-white transition-all duration-300 mt-5"
-                        >
-                          Add To Cart
-                        </button>
+                        <div className="space-y-3 mt-5">
+                          <button 
+                            onClick={() => {
+                              setSelectedProduct(product)
+                              setActivePage('details')
+                            }}
+                            className="w-full border border-[#183528] px-4 py-3 text-sm uppercase tracking-[0.2em] hover:bg-[#183528] hover:text-white transition-all duration-300"
+                          >
+                            View Details
+                          </button>
+
+                          <button 
+                            onClick={() => handleAddToCart(product)}
+                            className="w-full bg-[#183528] text-white px-4 py-3 text-sm uppercase tracking-[0.2em] hover:bg-[#2f5140] transition-all duration-300"
+                          >
+                            Add To Cart
+                          </button>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -1085,12 +1095,24 @@ export default function JTSWigsStore() {
                         <h3 className="font-semibold text-lg">{product.name}</h3>
                         <p className="text-[#183528] font-bold mt-4 text-xl">{product.price}</p>
 
-                        <button 
-                          onClick={() => handleAddToCart(product)}
-                          className="w-full border border-[#183528] px-4 py-3 text-sm uppercase tracking-[0.2em] hover:bg-[#183528] hover:text-white transition-all duration-300 mt-5"
-                        >
-                          Add To Cart
-                        </button>
+                        <div className="space-y-3 mt-5">
+                          <button 
+                            onClick={() => {
+                              setSelectedProduct(product)
+                              setActivePage('details')
+                            }}
+                            className="w-full border border-[#183528] px-4 py-3 text-sm uppercase tracking-[0.2em] hover:bg-[#183528] hover:text-white transition-all duration-300"
+                          >
+                            View Details
+                          </button>
+
+                          <button 
+                            onClick={() => handleAddToCart(product)}
+                            className="w-full bg-[#183528] text-white px-4 py-3 text-sm uppercase tracking-[0.2em] hover:bg-[#2f5140] transition-all duration-300"
+                          >
+                            Add To Cart
+                          </button>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -1098,14 +1120,14 @@ export default function JTSWigsStore() {
               </div>
             )}
 
-            {/* HAIR PRODUCTS SECTION */}
+            {/* HAIR CARE PRODUCTS SECTION */}
             {(selectedProductType === 'Hair Products' || selectedProductType === 'All Products') && (
-              <div>
-                <h3 className="text-4xl font-bold uppercase tracking-wide mb-8 text-[#183528]">Serums</h3>
+              <div className="mb-20">
+                <h3 className="text-4xl font-bold uppercase tracking-wide mb-8 text-[#183528]">Hair Care</h3>
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
                   {productCategories['Hair Products']?.map((product, index) => (
                     <div
-                      key={`serum-${index}`}
+                      key={`haircare-${index}`}
                       className="bg-white overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group"
                     >
                       <div className="overflow-hidden">
@@ -1121,18 +1143,32 @@ export default function JTSWigsStore() {
                         <h3 className="font-semibold text-lg">{product.name}</h3>
                         <p className="text-[#183528] font-bold mt-4 text-xl">{product.price}</p>
 
-                        <button 
-                          onClick={() => handleAddToCart(product)}
-                          className="w-full border border-[#183528] px-4 py-3 text-sm uppercase tracking-[0.2em] hover:bg-[#183528] hover:text-white transition-all duration-300 mt-5"
-                        >
-                          Add To Cart
-                        </button>
+                        <div className="space-y-3 mt-5">
+                          <button 
+                            onClick={() => {
+                              setSelectedProduct(product)
+                              setActivePage('details')
+                            }}
+                            className="w-full border border-[#183528] px-4 py-3 text-sm uppercase tracking-[0.2em] hover:bg-[#183528] hover:text-white transition-all duration-300"
+                          >
+                            View Details
+                          </button>
+
+                          <button 
+                            onClick={() => handleAddToCart(product)}
+                            className="w-full bg-[#183528] text-white px-4 py-3 text-sm uppercase tracking-[0.2em] hover:bg-[#2f5140] transition-all duration-300"
+                          >
+                            Add To Cart
+                          </button>
+                        </div>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
             )}
+
+
           </div>
         </section>
       )}
