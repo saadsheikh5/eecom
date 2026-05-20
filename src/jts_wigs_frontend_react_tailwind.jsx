@@ -247,7 +247,7 @@ export default function JTSWigsStore() {
       <header className={`sticky top-0 z-50 bg-[#183528] text-white shadow-md transition-transform duration-300 ease-in-out ${
         isNavVisible ? 'translate-y-0' : '-translate-y-full'
       }`}>
-        <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-4 max-w-7xl mx-auto">
+        <div className="flex items-center justify-between px-3 sm:px-4 py-0 sm:py-1 h-14 sm:h-16 max-w-7xl mx-auto">
           <button 
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="space-y-1 hover:opacity-80 transition"
@@ -255,14 +255,14 @@ export default function JTSWigsStore() {
             <Menu size={24} />
           </button>
 
-          <div className="cursor-pointer flex items-center justify-center gap-4 flex-1 mt-6" onClick={() => setActivePage('home')}>
+          <div className="cursor-pointer flex items-center justify-center gap-0 flex-1 mt-0" onClick={() => setActivePage('home')}>
             <img
               src="images/logonew.png"
               alt="JTS Logo"
-              className="h-28 sm:h-40 lg:h-52 object-contain align-middle"
-              style={{ maxWidth: '110px' }}
+              className="h-32 sm:h-44 lg:h-60 object-contain align-middle translate-y-2 sm:translate-y-3"
+              style={{ maxWidth: '160px' }}
             />
-            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-[#d4c2aa] whitespace-nowrap flex items-center" style={{lineHeight:1}}>JTS BEAUTY</h1>
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#d4c2aa] whitespace-nowrap flex items-center" style={{lineHeight:1}}>JTS BEAUTY</h1>
           </div>
 
           <div className="flex gap-4 items-center text-xl">
