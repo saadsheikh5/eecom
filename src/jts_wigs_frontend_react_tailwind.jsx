@@ -40,7 +40,7 @@ export default function JTSWigsStore() {
   const wigCategories = [
     {
       title: 'Straight',
-      image: 'images/1.PNG',
+      image: 'images/straight.png',
       description: 'JTs Beauty Straight • 250 Density • Transparent Lace',
       price: 'From $250',
       style: 'Straight',
@@ -64,7 +64,7 @@ export default function JTSWigsStore() {
     },
     {
       title: 'Water Wave',
-      image: 'images/water-wave-1.PNG',
+      image: 'images/water-wave-2.PNG',
       description: 'JTs Beauty Bodywave 13x4 • 250 Density • Transparent Lace',
       price: 'From $300',
       style: 'Water Wave',
@@ -80,9 +80,9 @@ export default function JTSWigsStore() {
     },
     {
       title: 'Pineapple Wave',
-      image: 'images/3.PNG',
+      image: 'images/pineapple wave.PNG',
       description: '13x4 Transparent Lace • 250 Density • 26 inch',
-      price: '$420',
+      price: 'From $420',
       style: 'Pineapple Wave',
       details: '26 inch pineapple wave with premium transparent lace',
     },
@@ -92,7 +92,7 @@ export default function JTSWigsStore() {
     {
       title: 'Tri Color Body Wave',
       price: '$500',
-      image: 'images/body-wave-2.PNG',
+      image: 'images/tri color body wave.png',
       description: 'JTs Beauty Tri Color Body Wave 13x4 • 250 Density • 30 inch • Transparent Lace',
       category: 'Wigs',
       type: 'Featured',
@@ -205,6 +205,17 @@ export default function JTSWigsStore() {
     'Lace Tints': beautyProducts.filter(p => p.category === 'Lace Tints'),
     'Hair Products': beautyProducts.filter(p => p.category === 'Hair Products'),
   }
+
+  // Separate out lace glues so we can render them in their own section
+  const hairCareProducts = beautyProducts.filter(p => p.category === 'Hair Products')
+  const laceTints = beautyProducts.filter(p => p.category === 'Lace Tints')
+  const laceGlues = hairCareProducts.filter(p => p.name && p.name.toLowerCase().includes('glue'))
+  const hairProducts = hairCareProducts.filter(p => !laceGlues.includes(p))
+
+  // register beauty categories in the categories map
+  productCategories['Lace Tints'] = laceTints
+  productCategories['Lace Glues'] = laceGlues
+  productCategories['Hair Products'] = hairProducts
 
   const filteredWigs = selectedCategory === 'All Wigs' 
     ? wigCategories 
@@ -382,6 +393,21 @@ export default function JTSWigsStore() {
                     className="block w-full text-left text-[#3a5c4b] hover:text-[#d4c2aa] transition text-sm pl-4"
                   >
                     Lace Tints
+                  </button>
+                </div>
+
+                {/* Lace Glues */}
+                <div>
+                  <h3 className="font-bold text-[#183528] text-lg mb-3">Lace Glues</h3>
+                  <button
+                    onClick={() => {
+                      setSelectedProductType('Lace Glues')
+                      setActivePage('products')
+                      setSidebarOpen(false)
+                    }}
+                    className="block w-full text-left text-[#3a5c4b] hover:text-[#d4c2aa] transition text-sm pl-4"
+                  >
+                    Lace Glues
                   </button>
                 </div>
 
@@ -590,6 +616,50 @@ export default function JTSWigsStore() {
         </div>
       </section>
 
+      {/* Lace Tints */}
+      <section className="bg-white py-16 px-4 sm:px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="uppercase tracking-[0.3em] text-sm text-[#3a5c4b]">
+              Accessories & Care
+            </p>
+            <h2 className="text-4xl sm:text-5xl font-bold mt-2">
+              Lace Tints
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+            {laceTints.map((product, index) => (
+              <div
+                key={`lacetint-${index}`}
+                className="bg-white overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group"
+              >
+                <div className="overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="h-56 sm:h-80 w-full object-cover group-hover:scale-105 transition duration-500"
+                    onError={(e) => e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Crect fill="%23e6e1da" width="100" height="100"/%3E%3Ctext x="50" y="50" font-family="Arial" font-size="14" fill="%23999" text-anchor="middle" dy=".3em"%3ENo Image%3C/text%3E%3C/svg%3E'}
+                  />
+                </div>
+
+                <div className="p-5 text-center">
+                  <h3 className="font-semibold text-lg">{product.name}</h3>
+                  <p className="text-[#183528] font-bold mt-4 text-xl">{product.price}</p>
+
+                  <button 
+                    onClick={() => handleAddToCart(product)}
+                    className="w-full border border-[#183528] px-4 py-3 text-sm uppercase tracking-[0.2em] hover:bg-[#183528] hover:text-white transition-all duration-300 mt-5"
+                  >
+                    Add To Cart
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Hair Care Products */}
       <section className="bg-white py-16 px-4 sm:px-6 lg:px-10">
         <div className="max-w-7xl mx-auto">
@@ -603,9 +673,49 @@ export default function JTSWigsStore() {
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
-            {beautyProducts.map((product, index) => (
+            {hairProducts.map((product, index) => (
               <div
                 key={`haircare-${index}`}
+                className="bg-white overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group"
+              >
+                <div className="overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="h-56 sm:h-80 w-full object-cover group-hover:scale-105 transition duration-500"
+                    onError={(e) => e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Crect fill="%23e6e1da" width="100" height="100"/%3E%3Ctext x="50" y="50" font-family="Arial" font-size="14" fill="%23999" text-anchor="middle" dy=".3em"%3ENo Image%3C/text%3E%3C/svg%3E'}
+                  />
+                </div>
+
+                <div className="p-5 text-center">
+                  <h3 className="font-semibold text-lg">{product.name}</h3>
+                  <p className="text-[#183528] font-bold mt-4 text-xl">{product.price}</p>
+
+                  <button 
+                    onClick={() => handleAddToCart(product)}
+                    className="w-full border border-[#183528] px-4 py-3 text-sm uppercase tracking-[0.2em] hover:bg-[#183528] hover:text-white transition-all duration-300 mt-5"
+                  >
+                    Add To Cart
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lace Glues Section */}
+      <section className="bg-white py-16 px-4 sm:px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="uppercase tracking-[0.3em] text-sm text-[#3a5c4b]">Accessories & Care</p>
+            <h2 className="text-4xl sm:text-5xl font-bold mt-2">Lace Glues</h2>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+            {laceGlues.map((product, index) => (
+              <div
+                key={`laceglue-${index}`}
                 className="bg-white overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group"
               >
                 <div className="overflow-hidden">
@@ -1080,6 +1190,56 @@ export default function JTSWigsStore() {
                   {productCategories['Lace Tints']?.map((product, index) => (
                     <div
                       key={`lace-${index}`}
+                      className="bg-white overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group"
+                    >
+                      <div className="overflow-hidden">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="h-56 sm:h-80 w-full object-cover group-hover:scale-105 transition duration-500"
+                          onError={(e) => e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Crect fill="%23e6e1da" width="100" height="100"/%3E%3Ctext x="50" y="50" font-family="Arial" font-size="14" fill="%23999" text-anchor="middle" dy=".3em"%3ENo Image%3C/text%3E%3C/svg%3E'}
+                        />
+                      </div>
+
+                      <div className="p-5 text-center">
+                        <h3 className="font-semibold text-lg">{product.name}</h3>
+                        <p className="text-[#183528] font-bold mt-4 text-xl">{product.price}</p>
+
+                        <div className="space-y-3 mt-5">
+                          <button 
+                            onClick={() => {
+                              setSelectedProduct(product)
+                              setActivePage('details')
+                            }}
+                            className="w-full border border-[#183528] px-4 py-3 text-sm uppercase tracking-[0.2em] hover:bg-[#183528] hover:text-white transition-all duration-300"
+                          >
+                            View Details
+                          </button>
+
+                          <button 
+                            onClick={() => handleAddToCart(product)}
+                            className="w-full bg-[#183528] text-white px-4 py-3 text-sm uppercase tracking-[0.2em] hover:bg-[#2f5140] transition-all duration-300"
+                          >
+                            Add To Cart
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* LACE GLUES SECTION - show for Lace Glues, Hair Products, or All Products */}
+            {(selectedProductType === 'Lace Glues' || selectedProductType === 'Hair Products' || selectedProductType === 'All Products') && (
+              <div className="mb-20">
+                {selectedProductType !== 'Lace Glues' && (
+                  <h3 className="text-4xl font-bold uppercase tracking-wide mb-8 text-[#183528]">Lace Glues</h3>
+                )}
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+                  {productCategories['Lace Glues']?.map((product, index) => (
+                    <div
+                      key={`laceglue-${index}`}
                       className="bg-white overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group"
                     >
                       <div className="overflow-hidden">
