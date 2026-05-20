@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/bentley-script');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +8,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.font-bentley-script {
+  font-family: 'Bentley Script', cursive !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  letter-spacing: -0.04em;
 }
 
 body {

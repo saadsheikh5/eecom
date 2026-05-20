@@ -262,7 +262,7 @@ export default function JTSWigsStore() {
               className="h-32 sm:h-44 lg:h-60 object-contain align-middle translate-y-2 sm:translate-y-3"
               style={{ maxWidth: '160px' }}
             />
-            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#d4c2aa] whitespace-nowrap flex items-center" style={{lineHeight:1}}>JTS BEAUTY</h1>
+            <h1 className="text-2xl sm:text-4xl lg:text-6xl text-[#d4c2aa] whitespace-nowrap flex items-center font-bentley-script" style={{ lineHeight: 0.95, letterSpacing: '-0.04em', fontWeight: 400 }}>JTS Beauty</h1>
           </div>
 
           <div className="flex gap-4 items-center text-xl">
